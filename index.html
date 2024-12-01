@@ -114,32 +114,18 @@ h1 {
     </button>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script>
     function initiateUPIPayment() {
-      const upiID = 'riteshhsolankii@ybl';
-      const name = 'Ritesh Solanki';
-      const amount = '1';
-      const note = 'Payment for services';
-      const currency = 'INR';
+      const upiID = 'riteshhsolankii@ybl'; // Your UPI ID
+      const name = 'Ritesh Solanki'; // Your name
+      const amount = '100'; // Amount (can be dynamic)
+      const note = 'Payment for services'; // Transaction note
+      const currency = 'INR'; // Currency
       
       const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=${currency}&tn=${encodeURIComponent(note)}`;
-  
-      if (navigator.userAgent.match(/Android|iPhone/i)) {
-        window.location.href = upiLink;
-      } else {
-        generateQRCode(upiLink);
-      }
-    }
-  
-    function generateQRCode(upiLink) {
-      QRCode.toCanvas(document.getElementById('qr-code'), upiLink, function (error) {
-        if (error) console.error(error);
-        console.log('Success!');
-      });
+      window.location.href = upiLink;
     }
   </script>
-  <canvas id="qr-code"></canvas>
   
 </body>
 </html>
